@@ -12,6 +12,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{746EECE8-1
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RegressionTests", "RegressionTests\RegressionTests.fsproj", "{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{F4707806-85B0-4480-A7C6-2EE786140B64}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+		.paket\paket.exe = .paket\paket.exe
+		paket.lock = paket.lock
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +35,10 @@ Global
 		{9AB6F306-D255-4447-86B1-B371735EB000}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB6F306-D255-4447-86B1-B371735EB000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AB6F306-D255-4447-86B1-B371735EB000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
