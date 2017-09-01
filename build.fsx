@@ -39,7 +39,7 @@ Target "BuildTests" (fun _ ->
 
 Target "Test" (fun _ ->
     !! (testDir + "/*Tests.dll")
-        |> NUnit3 id
+        |> NUnit3 (fun p -> { p with WorkingDir = testDir })
 )
 
 // Build order

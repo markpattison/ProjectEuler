@@ -52,7 +52,18 @@
   <ItemGroup>
     <None Include="paket.references" />
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Util.fs" />
     <Compile Include="Problem1.fs" />
+    <Compile Include="Problem2.fs" />
+    <Compile Include="Problem3.fs" />
+    <Compile Include="Problem21.fs" />
+    <Compile Include="Problem31.fs" />
+    <Compile Include="Problem76.fs" />
+    <Compile Include="Problem81.fs" />
+    <Compile Include="Problem85.fs" />
+    <Compile Include="Problem99.fs" />
+    <Compile Include="Problem232.fs" />
+    <Compile Include="ProblemsF.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

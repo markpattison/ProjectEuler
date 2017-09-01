@@ -27,6 +27,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FAKE", "FAKE", "{E9153D96-C
 		build.fsx = build.fsx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{EADFB217-5DD1-4C30-A844-6E35DB072961}"
+	ProjectSection(SolutionItems) = preProject
+		Data\base_exp.txt = Data\base_exp.txt
+		Data\cipher1.txt = Data\cipher1.txt
+		Data\matrix.txt = Data\matrix.txt
+		Data\names.txt = Data\names.txt
+		Data\poker.txt = Data\poker.txt
+		Data\roman.txt = Data\roman.txt
+		Data\triangle.txt = Data\triangle.txt
+		Data\words.txt = Data\words.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
