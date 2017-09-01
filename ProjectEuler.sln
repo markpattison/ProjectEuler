@@ -12,13 +12,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{746EECE8-1
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RegressionTests", "RegressionTests\RegressionTests.fsproj", "{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ProjectEuler.RegressionTests", "ProjectEuler.RegressionTests\ProjectEuler.RegressionTests.fsproj", "{66D0BF6C-2E39-4B80-BA82-1811E3330BC0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{F4707806-85B0-4480-A7C6-2EE786140B64}"
 	ProjectSection(SolutionItems) = preProject
 		paket.dependencies = paket.dependencies
 		.paket\paket.exe = .paket\paket.exe
 		paket.lock = paket.lock
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FAKE", "FAKE", "{E9153D96-C035-4295-BAB3-00CE8B9E640B}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+		build.fsx = build.fsx
 	EndProjectSection
 EndProject
 Global

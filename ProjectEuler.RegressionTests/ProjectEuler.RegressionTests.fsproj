@@ -8,7 +8,7 @@
     <ProjectGuid>66d0bf6c-2e39-4b80-ba82-1811e3330bc0</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>RegressionTests</RootNamespace>
-    <AssemblyName>RegressionTests</AssemblyName>
+    <AssemblyName>ProjectEuler.RegressionTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,16 +49,6 @@
     </Otherwise>
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
-  <ItemGroup>
-    <None Include="paket.references" />
-    <Compile Include="AssemblyInfo.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -190,4 +180,26 @@
       </ItemGroup>
     </When>
   </Choose>
+  <ItemGroup>
+    <None Include="paket.references" />
+    <Compile Include="AssemblyInfo.fs" />
+    <Content Include="app.config" />
+    <Compile Include="SolutionTests.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <ProjectReference Include="..\EulerCSharp\EulerCSharp.csproj">
+      <Name>EulerCSharp</Name>
+      <Project>{91298088-d33f-401f-8751-a70bbc0cf31e}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\EulerFSharp\EulerFSharp.fsproj">
+      <Name>EulerFSharp</Name>
+      <Project>{9ab6f306-d255-4447-86b1-b371735eb000}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
