@@ -184,7 +184,8 @@
     <None Include="paket.references" />
     <Compile Include="AssemblyInfo.fs" />
     <Content Include="app.config" />
-    <Compile Include="SolutionTests.fs" />
+    <Compile Include="FSharpSolutionTests.fs" />
+    <Compile Include="CSharpSolutionTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
