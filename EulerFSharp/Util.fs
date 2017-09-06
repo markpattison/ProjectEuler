@@ -1,5 +1,7 @@
 ﻿module ProjectEuler.EulerFSharp.Util
 
+type EulerFSharpType() = member _x.x = 1
+
 let dataPath =
     let path = System.Environment.GetEnvironmentVariable "EulerData"
     match path with

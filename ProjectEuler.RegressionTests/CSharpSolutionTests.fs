@@ -3,14 +3,29 @@
 open FsUnit
 open NUnit.Framework
 
-module CSharpSolutions =
+[<TestFixture>]
+type CSharpSolutions() =
 
-    open ProjectEuler.EulerCSharp
+    static member solutions =
+        [|
+            1,  box 233168
+            2,  box 4613732
+            3,  box 6857
+        |]
+        |> Array.map (fun (problem, expected) ->
+            let name = sprintf "Problem%i" problem
+            let problemType = System.Reflection.Assembly.GetAssembly(typeof<ProjectEuler.EulerCSharp.Problems>).GetTypes() |> Seq.find (fun t -> t.Name = "Problems")
+            let problemMethod = problemType.GetMethods() |> Seq.find (fun m -> m.Name = name)
 
-    let problems = new Problems()
+            let tcd = new TestCaseData(problemMethod, expected)
+            tcd.SetName(sprintf "C# problem %i" problem))
 
-    [<Test>]
-    let problem1 () = problems.Problem1() |> should equal 233168
+    [<TestCaseSource("solutions")>]
+    member _x.test (method: System.Reflection.MethodInfo) expected =
+        
+        let actual = method.Invoke(null, [||])
+
+        actual |> should equal expected
 
 //        [TestMethod]
 //        public void Problem2()

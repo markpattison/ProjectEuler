@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ProjectEuler.EulerCSharp
 {
-    public class Problems
+    public static class Problems
     {
         static Utilities util = new Utilities();
 
@@ -14,7 +14,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem1
         /// Completed 10/11/2008
         /// </summary>
-        public long Problem1()
+        public static long Problem1()
         {
             long max = 1000;
             long answer = 0;
@@ -37,7 +37,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem2
         /// Completed 10/11/2008
         /// </summary>
-        public long Problem2()
+        public static long Problem2()
         {
             long limit = 4000000;
             long answer = 0;
@@ -61,7 +61,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem3
         /// Completed 10/11/2008
         /// </summary>
-        public long Problem3()
+        public static long Problem3()
         {
             long target = 600851475143;
             long answer = 0;
@@ -82,7 +82,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem4
         /// Completed 10/11/2008
         /// </summary>
-        public long Problem4()
+        public static long Problem4()
         {
             long answer = 0;
             long max = 999;
@@ -103,7 +103,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem5
         /// Completed 11/11/2008
         /// </summary>
-        public long Problem5()
+        public static long Problem5()
         {
             long answer = 0;
             long limit = 20;
@@ -131,7 +131,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem6
         /// Completed 11/11/2008
         /// </summary>
-        public long Problem6()
+        public static long Problem6()
         {
             long answer = 0;
             long limit = 100;
@@ -156,7 +156,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem7
         /// Completed 11/11/2008
         /// </summary>
-        public long Problem7()
+        public static long Problem7()
         {
             long answer = 0;
             long number = 10001;
@@ -176,7 +176,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem8
         /// Completed 11/11/2008
         /// </summary>
-        public long Problem8()
+        public static long Problem8()
         {
             long answer = 0;
 
@@ -200,7 +200,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem9
         /// Completed 12/11/2008
         /// </summary>
-        public long Problem9()
+        public static long Problem9()
         {
             long answer = 0;
             long target = 1000;
@@ -225,7 +225,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem10
         /// Completed 12/11/2008
         /// </summary>
-        public long Problem10()
+        public static long Problem10()
         {
             long answer = 0;
             long number = 150000;
@@ -243,7 +243,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem11
         /// Completed 11/11/2008
         /// </summary>
-        public long Problem11()
+        public static long Problem11()
         {
             // done by eye, they are diagonal near the bottom left
 
@@ -256,7 +256,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem12
         /// Completed 12/11/2008
         /// </summary>
-        public long Problem12()
+        public static long Problem12()
         {
             long answer = 0;
             long target = 500;
@@ -276,7 +276,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem13
         /// Completed 13/11/2008
         /// </summary>
-        public long Problem13()
+        public static long Problem13()
         {
             long answer = 0;
 
@@ -398,7 +398,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem14
         /// Completed 13/11/2008
         /// </summary>
-        public long Problem14()
+        public static long Problem14()
         {
             long answer = 0;
             long longest = 0;
@@ -421,7 +421,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem15
         /// Completed 13/11/2008
         /// </summary>
-        public long Problem15()
+        public static long Problem15()
         {
             // done using a calculator
 
@@ -437,7 +437,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem16
         /// Completed 14/11/2008
         /// </summary>
-        public long Problem16()
+        public static long Problem16()
         {
             long answer = 0;
             long target = 1000;
@@ -456,7 +456,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem17
         /// Completed 3/12/2008
         /// </summary>
-        public long Problem17()
+        public static long Problem17()
         {
             long answer = 0;
             long target = 1000;
@@ -476,7 +476,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem18
         /// Completed 14/11/2008
         /// </summary>
-        public long Problem18()
+        public static long Problem18()
         {
             long answer = 0;
 
@@ -521,7 +521,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem19
         /// Completed 12/01/2009
         /// </summary>
-        public long Problem19()
+        public static long Problem19()
         {
             long answer = 0;
 
@@ -590,7 +590,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem20
         /// Completed 12/01/2009
         /// </summary>
-        public long Problem20()
+        public static long Problem20()
         {
             long answer = 0;
             long target = 100;
@@ -610,7 +610,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem22
         /// Completed 31/08/2009
         /// </summary>
-        public long Problem22()
+        public static long Problem22()
         {
             long answer = 0;
 
@@ -634,7 +634,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem23
         /// Completed 31/08/2009
         /// </summary>
-        public long Problem23()
+        public static long Problem23()
         {
             long answer = 0;
             int max = 28123;
@@ -660,7 +660,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem24
         /// Completed 12/01/2009
         /// </summary>
-        public long Problem24()
+        public static long Problem24()
         {
             long answer = 0;
 
@@ -686,7 +686,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem25
         /// Completed 12/01/2009
         /// </summary>
-        public long Problem25()
+        public static long Problem25()
         {
             long answer = 0;
             long target = 1000;
@@ -713,7 +713,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem26
         /// Completed 07/09/2009
         /// </summary>
-        public long Problem26()
+        public static long Problem26()
         {
             // unsatisfyingly guessed from primes near 1000
 
@@ -726,7 +726,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem27
         /// Completed 07/09/2009
         /// </summary>
-        public long Problem27()
+        public static long Problem27()
         {
             long answer = 0;
 
@@ -760,7 +760,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem28
         /// Completed 14/01/2009
         /// </summary>
-        public long Problem28()
+        public static long Problem28()
         {
             long answer = 0;
             long target = 1001;
@@ -787,7 +787,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem29
         /// Completed ???
         /// </summary>
-        public long Problem29()
+        public static long Problem29()
         {
             long answer = 0;
 
@@ -811,7 +811,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem30
         /// Completed 14/01/2009
         /// </summary>
-        public long Problem30()
+        public static long Problem30()
         {
             long answer = 0;
 
@@ -845,7 +845,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem32
         /// Completed 08/09/2009
         /// </summary>
-        public long Problem32()
+        public static long Problem32()
         {
             // assuming a x b = c
             // note that the length of c must be four digits, leaving five for a * b
@@ -875,7 +875,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem33
         /// Completed 05/03/2009
         /// </summary>
-        public long Problem33()
+        public static long Problem33()
         {
             long answer = 0;
 
@@ -922,7 +922,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem34
         /// Completed 14/01/2009
         /// </summary>
-        public long Problem34()
+        public static long Problem34()
         {
             long answer = 0;
 
@@ -957,7 +957,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem35
         /// Completed 22/01/2009
         /// </summary>
-        public long Problem35()
+        public static long Problem35()
         {
             long answer = 0;
 
@@ -1003,7 +1003,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem36
         /// Completed 15/01/2009
         /// </summary>
-        public long Problem36()
+        public static long Problem36()
         {
             long answer = 0;
 
@@ -1031,7 +1031,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem37
         /// Completed 12/03/2009
         /// </summary>
-        public long Problem37()
+        public static long Problem37()
         {
             long answer = 0;
             long count = 0;
@@ -1084,7 +1084,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem38
         /// Completed 08/09/2009
         /// </summary>
-        public long Problem38()
+        public static long Problem38()
         {
             // note that the integer a must begin with 9
 
@@ -1113,7 +1113,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem39
         /// Completed 15/09/2009
         /// </summary>
-        public long Problem39()
+        public static long Problem39()
         {
             long answer = 0;
 
@@ -1152,7 +1152,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem40
         /// Completed ???
         /// </summary>
-        public long Problem40()
+        public static long Problem40()
         {
             long answer = 0;
 
@@ -1181,7 +1181,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem41
         /// Completed 03/03/2009
         /// </summary>
-        public long Problem41()
+        public static long Problem41()
         {
             long answer = 0;
 
@@ -1208,7 +1208,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem42
         /// Completed 31/08/2009
         /// </summary>
-        public long Problem42()
+        public static long Problem42()
         {
             long answer = 0;
 
@@ -1237,7 +1237,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem43
         /// Completed 04/03/2009
         /// </summary>
-        public long Problem43()
+        public static long Problem43()
         {
             long answer = 0;
             string target = "1234567890";
@@ -1273,7 +1273,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem44
         /// Completed 04/03/2009
         /// </summary>
-        public long Problem44()
+        public static long Problem44()
         {
             long answer = 0;
             long max = 3000;
@@ -1308,7 +1308,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem45
         /// Completed 04/03/2009
         /// </summary>
-        public long Problem45()
+        public static long Problem45()
         {
             long answer = 0;
 
@@ -1333,7 +1333,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem46
         /// Completed 15/09/2009
         /// </summary>
-        public long Problem46()
+        public static long Problem46()
         {
             long answer = 0;
 
@@ -1373,7 +1373,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem47
         /// Completed 26/09/2009 
         /// </summary>
-        public long Problem47()
+        public static long Problem47()
         {
             long answer = 0;
             long target = 4;
@@ -1409,7 +1409,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem48
         /// Completed 15/01/2009
         /// </summary>
-        public string Problem48()
+        public static string Problem48()
         {
             BigNum sum = new BigNum(0);
 
@@ -1430,7 +1430,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem67
         /// Completed 31/08/2009
         /// </summary>
-        public long Problem67()
+        public static long Problem67()
         {
             long answer = 0;
 
@@ -1476,7 +1476,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem69
         /// Completed 26/09/2009
         /// </summary>
-        public long Problem69()
+        public static long Problem69()
         {
             // NB I should have worked out that the answer is just a multpiple of the smallest primes
             // i.e. 2*3*5*7*11*13*17 = 510510
@@ -1511,7 +1511,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem235
         /// Completed 12/03/2009
         /// </summary>
-        public double Problem235()
+        public static double Problem235()
         {
             double answer = 0;
 
@@ -1544,17 +1544,6 @@ namespace ProjectEuler.EulerCSharp
             }
 
             answer = x;
-
-            return answer;
-        }
-
-        /// <summary>
-        /// ProblemTemplate
-        /// Completed 
-        /// </summary>
-        public long Prob()
-        {
-            long answer = 0;
 
             return answer;
         }

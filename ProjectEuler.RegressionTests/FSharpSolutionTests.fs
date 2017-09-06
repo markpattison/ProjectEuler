@@ -8,29 +8,29 @@ open ProjectEuler.EulerFSharp
 [<TestFixture>]
 type FSharpSolutions() =
 
-    [<Test>]
-    member _x.problem1 () = Problem1.solution |> should equal 233168
+    static member solutions =
+        [|
+            1,  box 233168
+            2,  box 4613732
+            3,  box 6857
+            21, box 31626
+            31, box 73682
+            76, box 190569291
+            81, box 427337
+            85, box 2772
+            99, box 709
+        |]
+        |> Array.map (fun (problem, expected) ->
+            let name = sprintf "Problem%i" problem
+            let problemType = System.Reflection.Assembly.GetAssembly(typeof<Util.EulerFSharpType>).GetTypes() |> Seq.find (fun t -> t.Name = name)
+            let problemMethod = problemType.GetMethods() |> Seq.find (fun m -> m.Name = "get_solution")
 
-    [<Test>]
-    member _x.problem2 () = Problem2.solution |> should equal 4613732
+            let tcd = new TestCaseData(problemMethod, expected)
+            tcd.SetName(sprintf "F# problem %i" problem))
 
-    [<Test>]
-    member _x.problem3 () = Problem3.solution |> should equal 6857
+    [<TestCaseSource("solutions")>]
+    member _x.test (method: System.Reflection.MethodInfo) expected =
+        
+        let actual = method.Invoke(null, [||])
 
-    [<Test>]
-    member _x.problem21 () = Problem21.solution |> should equal 31626
-
-    [<Test>]
-    member _x.problem31 () = Problem31.solution |> should equal 73682
-
-    [<Test>]
-    member _x.problem76 () = Problem76.solution |> should equal 190569291
-
-    [<Test>]
-    member _x.problem81 () = Problem81.solution |> should equal 427337
-
-    [<Test>]
-    member _x.problem85 () = Problem85.solution |> should equal 2772
-
-    [<Test>]
-    member _x.problem99 () = Problem99.solution |> should equal 709
+        actual |> should equal expected
