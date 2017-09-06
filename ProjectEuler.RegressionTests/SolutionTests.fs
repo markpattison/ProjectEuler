@@ -8,40 +8,31 @@ module FSharpSolutions =
     open ProjectEuler.EulerFSharp
 
     [<Test>]
-    let problem1 () =
-        Problem1.solution |> should equal 233168
+    let problem1 () = Problem1.solution |> should equal 233168
 
     [<Test>]
-    let problem2 () =
-        Problem2.solution |> should equal 4613732
+    let problem2 () = Problem2.solution |> should equal 4613732
 
     [<Test>]
-    let problem3 () =
-        Problem3.solution |> should equal 6857
+    let problem3 () = Problem3.solution |> should equal 6857
 
     [<Test>]
-    let problem21 () =
-        Problem21.solution |> should equal 31626
+    let problem21 () = Problem21.solution |> should equal 31626
 
     [<Test>]
-    let problem31 () =
-        Problem31.solution |> should equal 73682
+    let problem31 () = Problem31.solution |> should equal 73682
 
     [<Test>]
-    let problem76 () =
-        Problem76.solution |> should equal 190569291
+    let problem76 () = Problem76.solution |> should equal 190569291
 
     [<Test>]
-    let problem81 () =
-        Problem81.solution |> should equal 427337
+    let problem81 () = Problem81.solution |> should equal 427337
 
     [<Test>]
-    let problem85 () =
-        Problem85.solution |> should equal 2772
+    let problem85 () = Problem85.solution |> should equal 2772
 
     [<Test>]
-    let problem99 () =
-        Problem99.solution |> should equal 709
+    let problem99 () = Problem99.solution |> should equal 709
 
 
 //        [TestMethod]

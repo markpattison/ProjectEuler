@@ -13,7 +13,7 @@ let readLines (filePath:string) =
 let matrixValues (lines: string seq) (size: int) =
     let values : int[,] = Array2D.zeroCreate size size
     for row = 0 to size-1 do
-        let line = Seq.nth row lines
+        let line = Seq.item row lines
         let lineValues = line.Split(',')
         for column = 0 to size-1 do
             values.[row, column] <- Int32.Parse(lineValues.[column])
