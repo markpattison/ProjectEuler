@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EulerCSharp", "EulerCSharp\EulerCSharp.csproj", "{91298088-D33F-401F-8751-A70BBC0CF31E}"
 EndProject
@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FAKE", "FAKE", "{E9153D96-C
 		build.fsx = build.fsx
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{EADFB217-5DD1-4C30-A844-6E35DB072961}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B05E6012-CE07-4413-A33A-DC48774E4CEC}"
 	ProjectSection(SolutionItems) = preProject
 		Data\base_exp.txt = Data\base_exp.txt
 		Data\cipher1.txt = Data\cipher1.txt
@@ -60,5 +60,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB4BBDA4-608A-4844-8773-B6C860AAD5F4}
 	EndGlobalSection
 EndGlobal

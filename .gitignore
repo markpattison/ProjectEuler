@@ -213,6 +213,7 @@ ModelManifest.xml
 
 # Paket
 .paket/paket.exe
+paket-files/
 
 # FAKE
 .fake/

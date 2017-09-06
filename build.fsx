@@ -9,6 +9,8 @@ let buildDir  = "./build/"
 let testDir   = "./test/"
 let deployDir = "./deploy/"
 
+setEnvironVar "EulerData" "Data"
+
 // Filesets
 let appReferences = 
     !! "**/*.csproj"
@@ -39,7 +41,7 @@ Target "BuildTests" (fun _ ->
 
 Target "Test" (fun _ ->
     !! (testDir + "/*Tests.dll")
-        |> NUnit3 (fun p -> { p with WorkingDir = testDir })
+        |> NUnit3 id
 )
 
 // Build order
