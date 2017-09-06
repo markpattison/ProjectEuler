@@ -34,6 +34,14 @@ module FSharpSolutions =
     [<Test>]
     let problem99 () = Problem99.solution |> should equal 709
 
+module CSharpSolutions =
+
+    open ProjectEuler.EulerCSharp
+
+    let problems = new Problems()
+
+    [<Test>]
+    let problem1 () = problems.Problem1() |> should equal 233168
 
 //        [TestMethod]
 //        public void Problem2()
