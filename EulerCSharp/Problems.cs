@@ -2259,25 +2259,34 @@ namespace ProjectEuler.EulerCSharp
             long[] primes = primeNumbers.Primes(10000, 1000);
 
             long frac = (n + 3) / 2;
+            long offset = 3 - (frac % 3);
 
             List<long> primeFactors = primeNumbers.PrimeFactors(frac, primes).Distinct().ToList();
 
-            bool test = true;
-            for (long i = 3 - (frac % 3); i < frac; i += 3)
-            {
-                test = true;
+            // want to test numbers from 0 to frac
+            // and count those that are equal to offset (mod 3) but not divisible by any of the prime factors
+            // using the inclusion-exclusion principle
 
-                foreach (long p in primeFactors)
+            var subsets = Utilities.GenerateSubsets(primeFactors, true, true);
+
+            foreach (var subset in subsets)
+            {
+                long product = 3L;
+                
+                foreach (long fac in subset)
                 {
-                    if (i % p == 0)
-                    {
-                        test = false;
-                    }
+                    product *= fac;
                 }
 
-                if (test)
+                long numInSet = Math.Max(0L, 1L + (frac + product / 3L) / product);
+
+                if (subset.Count % 2 == 0)
                 {
-                    answer++;
+                    answer += numInSet;
+                }
+                else
+                {
+                    answer -= numInSet;
                 }
             }
 
