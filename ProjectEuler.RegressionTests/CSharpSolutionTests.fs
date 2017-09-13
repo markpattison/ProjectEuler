@@ -8,9 +8,79 @@ type CSharpSolutions() =
 
     static member solutions =
         [|
-            1,  box 233168
-            2,  box 4613732
-            3,  box 6857
+            1,   box 233168
+            2,   box 4613732
+            3,   box 6857
+            4,   box 906609
+            5,   box 232792560
+            6,   box 25164150
+            7,   box 104743
+            8,   box 40824
+            9,   box 31875000
+            10,  box 142913828922L
+            11,  box 70600674
+            12,  box 76576500
+            13,  box 5537376230L
+            14,  box 837799
+            15,  box 137846528820L
+            16,  box 1366
+            17,  box 21124
+            18,  box 1074
+            19,  box 171
+            20,  box 648
+            22,  box 871198282
+            23,  box 4179871
+            24,  box 2783915460L
+            25,  box 4782
+            26,  box 983
+            27,  box -59231
+            28,  box 669171001
+            29,  box 9183
+            30,  box 443839
+            32,  box 45228
+            33,  box 100
+            34,  box 40730
+            35,  box 55
+            36,  box 872187
+            37,  box 748317
+            38,  box 932718654
+            39,  box 840
+            40,  box 210
+            41,  box 7652413
+            42,  box 162
+            43,  box 16695334890L
+            44,  box 5482660
+            45,  box 1533776805
+            46,  box 5777
+            47,  box 134043
+            48,  box 9110846700L
+            49,  box 296962999629L
+            50,  box 997651
+            51,  box 121313
+            52,  box 142857
+            53,  box 4075
+            54,  box 376
+            55,  box 249
+            56,  box 972
+            57,  box 153
+            59,  box 107359
+            63,  box 49
+            65,  box 272
+            67,  box 7273
+            69,  box 510510
+            70,  box 8319823
+            72,  box 303963552391L
+            74,  box 402
+            79,  box 73162890
+            89,  box 743
+            92,  box 8581146
+            97,  box 8739992577L
+            112, box 1587000
+            144, box 354
+            202, box 1209002624
+            206, box 1389019170
+            235, box 1.002322108633
+            243, box 892371480
         |]
         |> Array.map (fun (problem, expected) ->
             let name = sprintf "Problem%i" problem
@@ -23,478 +93,8 @@ type CSharpSolutions() =
     [<TestCaseSource("solutions")>]
     member _x.test (method: System.Reflection.MethodInfo) expected =
         
-        let actual = method.Invoke(null, [||])
+        let problems = new ProjectEuler.EulerCSharp.Problems()
+
+        let actual = method.Invoke(problems, [||])
 
         actual |> should equal expected
-
-//        [TestMethod]
-//        public void Problem2()
-//        {
-//            Assert.AreEqual(4613732, problems.Problem2());
-//        }
-//
-//        [TestMethod]
-//        public void Problem3()
-//        {
-//            Assert.AreEqual(6857, problems.Problem3());
-//        }
-//
-//        [TestMethod]
-//        public void Problem4()
-//        {
-//            Assert.AreEqual(906609, problems.Problem4());
-//        }
-//
-//        [TestMethod]
-//        public void Problem5()
-//        {
-//            Assert.AreEqual(232792560, problems.Problem5());
-//        }
-//
-//        [TestMethod]
-//        public void Problem6()
-//        {
-//            Assert.AreEqual(25164150, problems.Problem6());
-//        }
-//
-//        [TestMethod]
-//        public void Problem7()
-//        {
-//            Assert.AreEqual(104743, problems.Problem7());
-//        }
-//
-//        [TestMethod]
-//        public void Problem8()
-//        {
-//            Assert.AreEqual(40824, problems.Problem8());
-//        }
-//
-//        [TestMethod]
-//        public void Problem9()
-//        {
-//            Assert.AreEqual(31875000, problems.Problem9());
-//        }
-//
-//        [TestMethod]
-//        public void Problem10()
-//        {
-//            Assert.AreEqual(142913828922, problems.Problem10());
-//        }
-//
-//        [TestMethod]
-//        public void Problem11()
-//        {
-//            Assert.AreEqual(70600674, problems.Problem11());
-//        }
-//
-//        [TestMethod]
-//        public void Problem12()
-//        {
-//            Assert.AreEqual(76576500, problems.Problem12());
-//        }
-//
-//        [TestMethod]
-//        public void Problem13()
-//        {
-//            Assert.AreEqual(5537376230, problems.Problem13());
-//        }
-//
-//        [TestMethod]
-//        public void Problem14()
-//        {
-//            Assert.AreEqual(837799, problems.Problem14());
-//        }
-//
-//        [TestMethod]
-//        public void Problem15()
-//        {
-//            Assert.AreEqual(137846528820, problems.Problem15());
-//        }
-//
-//        [TestMethod]
-//        public void Problem16()
-//        {
-//            Assert.AreEqual(1366, problems.Problem16());
-//        }
-//
-//        [TestMethod]
-//        public void Problem17()
-//        {
-//            Assert.AreEqual(21124, problems.Problem17());
-//        }
-//
-//        [TestMethod]
-//        public void Problem18()
-//        {
-//            Assert.AreEqual(1074, problems.Problem18());
-//        }
-//
-//        [TestMethod]
-//        public void Problem19()
-//        {
-//            Assert.AreEqual(171, problems.Problem19());
-//        }
-//
-//        [TestMethod]
-//        public void Problem20()
-//        {
-//            Assert.AreEqual(648, problems.Problem20());
-//        }
-//
-//        [TestMethod]
-//        public void Problem21()
-//        {
-//            Assert.AreEqual(31626, problems.Problem21());
-//        }
-//
-//        [TestMethod]
-//        public void Problem22()
-//        {
-//            Assert.AreEqual(871198282, problems.Problem22());
-//        }
-//
-//        [TestMethod]
-//        public void Problem23()
-//        {
-//            Assert.AreEqual(4179871, problems.Problem23());
-//        }
-//
-//        [TestMethod]
-//        public void Problem24()
-//        {
-//            Assert.AreEqual(2783915460, problems.Problem24());
-//        }
-//
-//        [TestMethod]
-//        public void Problem25()
-//        {
-//            Assert.AreEqual(4782, problems.Problem25());
-//        }
-//
-//        [TestMethod]
-//        public void Problem26()
-//        {
-//            Assert.AreEqual(983, problems.Problem26());
-//        }
-//
-//        [TestMethod]
-//        public void Problem27()
-//        {
-//            Assert.AreEqual(-59231, problems.Problem27());
-//        }
-//
-//        [TestMethod]
-//        public void Problem28()
-//        {
-//            Assert.AreEqual(669171001, problems.Problem28());
-//        }
-//
-//        [TestMethod]
-//        public void Problem29()
-//        {
-//            Assert.AreEqual(9183, problems.Problem29());
-//        }
-//
-//        [TestMethod]
-//        public void Problem30()
-//        {
-//            Assert.AreEqual(443839, problems.Problem30());
-//        }
-//
-//        [TestMethod]
-//        public void Problem31()
-//        {
-//            Assert.AreEqual(73682, problems.Problem31());
-//        }
-//
-//        [TestMethod]
-//        public void Problem32()
-//        {
-//            Assert.AreEqual(45228, problems.Problem32());
-//        }
-//
-//        [TestMethod]
-//        public void Problem33()
-//        {
-//            Assert.AreEqual(100, problems.Problem33());
-//        }
-//
-//        [TestMethod]
-//        public void Problem34()
-//        {
-//            Assert.AreEqual(40730, problems.Problem34());
-//        }
-//
-//        [TestMethod]
-//        public void Problem35()
-//        {
-//            Assert.AreEqual(55, problems.Problem35());
-//        }
-//
-//        [TestMethod]
-//        public void Problem36()
-//        {
-//            Assert.AreEqual(872187, problems.Problem36());
-//        }
-//
-//        [TestMethod]
-//        public void Problem37()
-//        {
-//            Assert.AreEqual(748317, problems.Problem37());
-//        }
-//
-//        [TestMethod]
-//        public void Problem38()
-//        {
-//            Assert.AreEqual(932718654, problems.Problem38());
-//        }
-//
-//        [TestMethod]
-//        public void Problem39()
-//        {
-//            Assert.AreEqual(840, problems.Problem39());
-//        }
-//
-//        [TestMethod]
-//        public void Problem40()
-//        {
-//            Assert.AreEqual(210, problems.Problem40());
-//        }
-//
-//        [TestMethod]
-//        public void Problem41()
-//        {
-//            Assert.AreEqual(7652413, problems.Problem41());
-//        }
-//
-//        [TestMethod]
-//        public void Problem42()
-//        {
-//            Assert.AreEqual(162, problems.Problem42());
-//        }
-//
-//        [TestMethod]
-//        public void Problem43()
-//        {
-//            Assert.AreEqual(16695334890, problems.Problem43());
-//        }
-//
-//        [TestMethod]
-//        public void Problem44()
-//        {
-//            Assert.AreEqual(5482660, problems.Problem44());
-//        }
-//
-//        [TestMethod]
-//        public void Problem45()
-//        {
-//            Assert.AreEqual(1533776805, problems.Problem45());
-//        }
-//
-//        [TestMethod]
-//        public void Problem46()
-//        {
-//            Assert.AreEqual(5777, problems.Problem46());
-//        }
-//
-//        [TestMethod]
-//        public void Problem47()
-//        {
-//            Assert.AreEqual(134043, problems.Problem47());
-//        }
-//
-//        [TestMethod]
-//        public void Problem48()
-//        {
-//            Assert.AreEqual(9110846700, problems.Problem48());
-//        }
-//
-//        [TestMethod]
-//        public void Problem49()
-//        {
-//            Assert.AreEqual(296962999629, problems.Problem49());
-//        }
-//
-//        [TestMethod]
-//        public void Problem50()
-//        {
-//            Assert.AreEqual(997651, problems.Problem50());
-//        }
-//
-//        [TestMethod]
-//        public void Problem51()
-//        {
-//            Assert.AreEqual(121313, problems.Problem51());
-//        }
-//
-//        [TestMethod]
-//        public void Problem52()
-//        {
-//            Assert.AreEqual(142857, problems.Problem52());
-//        }
-//
-//        [TestMethod]
-//        public void Problem53()
-//        {
-//            Assert.AreEqual(4075, problems.Problem53());
-//        }
-//
-//        [TestMethod]
-//        public void Problem54()
-//        {
-//            Assert.AreEqual(376, problems.Problem54());
-//        }
-//
-//        [TestMethod]
-//        public void Problem55()
-//        {
-//            Assert.AreEqual(249, problems.Problem55());
-//        }
-//
-//        [TestMethod]
-//        public void Problem56()
-//        {
-//            Assert.AreEqual(972, problems.Problem56());
-//        }
-//
-//        [TestMethod]
-//        public void Problem57()
-//        {
-//            Assert.AreEqual(153, problems.Problem57());
-//        }
-//
-//        [TestMethod]
-//        public void Problem59()
-//        {
-//            Assert.AreEqual(107359, problems.Problem59());
-//        }
-//
-//        [TestMethod]
-//        public void Problem63()
-//        {
-//            Assert.AreEqual(49, problems.Problem63());
-//        }
-//
-//        [TestMethod]
-//        public void Problem65()
-//        {
-//            Assert.AreEqual(272, problems.Problem65());
-//        }
-//
-//        [TestMethod]
-//        public void Problem67()
-//        {
-//            Assert.AreEqual(7273, problems.Problem67());
-//        }
-//
-//        [TestMethod]
-//        public void Problem69()
-//        {
-//            Assert.AreEqual(510510, problems.Problem69());
-//        }
-//
-//        [TestMethod]
-//        public void Problem70()
-//        {
-//            Assert.AreEqual(8319823, problems.Problem70());
-//        }
-//
-//        [TestMethod]
-//        public void Problem72()
-//        {
-//            Assert.AreEqual(303963552391, problems.Problem72());
-//        }
-//
-//        [TestMethod]
-//        public void Problem74()
-//        {
-//            Assert.AreEqual(402, problems.Problem74());
-//        }
-//
-//        [TestMethod]
-//        public void Problem76()
-//        {
-//            Assert.AreEqual(190569291, problems.Problem76());
-//        }
-//
-//        [TestMethod]
-//        public void Problem79()
-//        {
-//            Assert.AreEqual(73162890, problems.Problem79());
-//        }
-//
-//        [TestMethod]
-//        public void Problem81()
-//        {
-//            Assert.AreEqual(427337, problems.Problem81());
-//        }
-//
-//        [TestMethod]
-//        public void Problem85()
-//        {
-//            Assert.AreEqual(2772, problems.Problem85());
-//        }
-//
-//        [TestMethod]
-//        public void Problem89()
-//        {
-//            Assert.AreEqual(743, problems.Problem89());
-//        }
-//
-//        [TestMethod]
-//        public void Problem92()
-//        {
-//            Assert.AreEqual(8581146, problems.Problem92());
-//        }
-//
-//        [TestMethod]
-//        public void Problem97()
-//        {
-//            Assert.AreEqual(8739992577, problems.Problem97());
-//        }
-//
-//        [TestMethod]
-//        public void Problem99()
-//        {
-//            Assert.AreEqual(709, problems.Problem99());
-//        }
-//
-//        [TestMethod]
-//        public void Problem112()
-//        {
-//            Assert.AreEqual(1587000, problems.Problem112());
-//        }
-//
-//        [TestMethod]
-//        public void Problem144()
-//        {
-//            Assert.AreEqual(354, problems.Problem144());
-//        }
-//
-//        [TestMethod]
-//        public void Problem202()
-//        {
-//            Assert.AreEqual(1209002624, problems.Problem202());
-//        }
-//
-//        [TestMethod]
-//        public void Problem206()
-//        {
-//            Assert.AreEqual(1389019170, problems.Problem206());
-//        }
-//
-//        [TestMethod]
-//        public void Problem235()
-//        {
-//            Assert.AreEqual(1.002322108633, problems.Problem235(), 0.0000000000005);
-//        }
-//
-//        [TestMethod]
-//        public void Problem243()
-//        {
-//            Assert.AreEqual(892371480, problems.Problem243(), 0.0000000000005);
-//        }
-//    }
-//}
-//
-//

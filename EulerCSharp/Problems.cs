@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace ProjectEuler.EulerCSharp
 {
-    public static class Problems
+    public class Problems
     {
         static Utilities util = new Utilities();
+        static PrimeNumbers primeNumbers = new PrimeNumbers();
 
         /// <summary>
         /// Problem1
         /// Completed 10/11/2008
         /// </summary>
-        public static long Problem1()
+        public long Problem1()
         {
             long max = 1000;
             long answer = 0;
@@ -37,7 +40,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem2
         /// Completed 10/11/2008
         /// </summary>
-        public static long Problem2()
+        public long Problem2()
         {
             long limit = 4000000;
             long answer = 0;
@@ -61,7 +64,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem3
         /// Completed 10/11/2008
         /// </summary>
-        public static long Problem3()
+        public long Problem3()
         {
             long target = 600851475143;
             long answer = 0;
@@ -82,7 +85,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem4
         /// Completed 10/11/2008
         /// </summary>
-        public static long Problem4()
+        public long Problem4()
         {
             long answer = 0;
             long max = 999;
@@ -103,35 +106,16 @@ namespace ProjectEuler.EulerCSharp
         /// Problem5
         /// Completed 11/11/2008
         /// </summary>
-        public static long Problem5()
+        public long Problem5()
         {
-            long answer = 0;
-            long limit = 20;
-
-            // NB this is highly inefficient
-            // problem can be done by hand in <1 minute...
-
-            bool done;
-
-            do
-            {
-                done = true;
-                answer++;
-                for (long j = 1; j <= limit; j++)
-                {
-                    if (answer % j != 0)
-                        done = false;
-                }
-            } while (!done);
-
-            return answer;
+            return 2 * 2 * 2 * 2 * 3 * 3 * 5 * 7 * 11 * 13 * 17 * 19;
         }
 
         /// <summary>
         /// Problem6
         /// Completed 11/11/2008
         /// </summary>
-        public static long Problem6()
+        public long Problem6()
         {
             long answer = 0;
             long limit = 100;
@@ -156,13 +140,13 @@ namespace ProjectEuler.EulerCSharp
         /// Problem7
         /// Completed 11/11/2008
         /// </summary>
-        public static long Problem7()
+        public long Problem7()
         {
             long answer = 0;
             long number = 10001;
             long biglimit = 1000000;
 
-            long[] primes = util.Primes(number, biglimit);
+            long[] primes = primeNumbers.Primes(number, biglimit);
 
             if (primes[0] >= number)
                 answer = primes[number];
@@ -176,7 +160,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem8
         /// Completed 11/11/2008
         /// </summary>
-        public static long Problem8()
+        public long Problem8()
         {
             long answer = 0;
 
@@ -200,7 +184,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem9
         /// Completed 12/11/2008
         /// </summary>
-        public static long Problem9()
+        public long Problem9()
         {
             long answer = 0;
             long target = 1000;
@@ -225,13 +209,13 @@ namespace ProjectEuler.EulerCSharp
         /// Problem10
         /// Completed 12/11/2008
         /// </summary>
-        public static long Problem10()
+        public long Problem10()
         {
             long answer = 0;
             long number = 150000;
             long limit = 2000000;
 
-            long[] primes = util.Primes(number, limit);
+            long[] primes = primeNumbers.Primes(number, limit);
 
             for (int i = 1; i <= primes[0]; i++)
                 answer += primes[i];
@@ -243,7 +227,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem11
         /// Completed 11/11/2008
         /// </summary>
-        public static long Problem11()
+        public long Problem11()
         {
             // done by eye, they are diagonal near the bottom left
 
@@ -256,7 +240,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem12
         /// Completed 12/11/2008
         /// </summary>
-        public static long Problem12()
+        public long Problem12()
         {
             long answer = 0;
             long target = 500;
@@ -276,7 +260,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem13
         /// Completed 13/11/2008
         /// </summary>
-        public static long Problem13()
+        public long Problem13()
         {
             long answer = 0;
 
@@ -398,7 +382,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem14
         /// Completed 13/11/2008
         /// </summary>
-        public static long Problem14()
+        public long Problem14()
         {
             long answer = 0;
             long longest = 0;
@@ -421,7 +405,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem15
         /// Completed 13/11/2008
         /// </summary>
-        public static long Problem15()
+        public long Problem15()
         {
             // done using a calculator
 
@@ -437,17 +421,17 @@ namespace ProjectEuler.EulerCSharp
         /// Problem16
         /// Completed 14/11/2008
         /// </summary>
-        public static long Problem16()
+        public long Problem16()
         {
             long answer = 0;
             long target = 1000;
 
-            BigNum n = new BigNum(1);
+            BigInteger n = 1;
 
             for (long i = 0; i < target; i++)
-                n = n.MultiplyBy(2);
+                n = n * 2;
 
-            answer = n.SumDigits();
+            answer = util.SumDigits(n);
 
             return answer;
         }
@@ -456,7 +440,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem17
         /// Completed 3/12/2008
         /// </summary>
-        public static long Problem17()
+        public long Problem17()
         {
             long answer = 0;
             long target = 1000;
@@ -476,7 +460,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem18
         /// Completed 14/11/2008
         /// </summary>
-        public static long Problem18()
+        public long Problem18()
         {
             long answer = 0;
 
@@ -521,7 +505,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem19
         /// Completed 12/01/2009
         /// </summary>
-        public static long Problem19()
+        public long Problem19()
         {
             long answer = 0;
 
@@ -590,33 +574,32 @@ namespace ProjectEuler.EulerCSharp
         /// Problem20
         /// Completed 12/01/2009
         /// </summary>
-        public static long Problem20()
+        public long Problem20()
         {
             long answer = 0;
             long target = 100;
 
-            BigNum n = new BigNum(target);
+            BigInteger n = target;
 
             for (long i = 2; i < target; i++)
-                n = n.MultiplyBy(i);
+                n = n * i;
 
-            answer = n.SumDigits();
+            answer = util.SumDigits(n);
 
             return answer;
         }
-
 
         /// <summary>
         /// Problem22
         /// Completed 31/08/2009
         /// </summary>
-        public static long Problem22()
+        public long Problem22()
         {
             long answer = 0;
 
             // get names
 
-            StreamReader sr = new StreamReader("Data\\names.txt");
+            StreamReader sr = new StreamReader(Utilities.DataPath + @"\names.txt");
             string all = sr.ReadLine();
             string[] names = all.Split(',').Select(s => s.Substring(1, s.Length - 2)).ToArray();
 
@@ -634,7 +617,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem23
         /// Completed 31/08/2009
         /// </summary>
-        public static long Problem23()
+        public long Problem23()
         {
             long answer = 0;
             int max = 28123;
@@ -660,7 +643,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem24
         /// Completed 12/01/2009
         /// </summary>
-        public static long Problem24()
+        public long Problem24()
         {
             long answer = 0;
 
@@ -686,19 +669,19 @@ namespace ProjectEuler.EulerCSharp
         /// Problem25
         /// Completed 12/01/2009
         /// </summary>
-        public static long Problem25()
+        public long Problem25()
         {
             long answer = 0;
             long target = 1000;
 
-            BigNum fibN = new BigNum(1);
-            BigNum fibNminus1 = new BigNum(1);
-            BigNum temp;
+            BigInteger fibN = 1;
+            BigInteger fibNminus1 = 1;
+            BigInteger temp;
             long n = 2;
 
-            while (fibN.NumDigits < target)
+            while (util.NumberOfDigits(fibN) < target)
             {
-                temp = fibN.AddTo(fibNminus1);
+                temp = fibN + fibNminus1;
                 fibNminus1 = fibN;
                 fibN = temp;
                 n++;
@@ -713,7 +696,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem26
         /// Completed 07/09/2009
         /// </summary>
-        public static long Problem26()
+        public long Problem26()
         {
             // unsatisfyingly guessed from primes near 1000
 
@@ -726,7 +709,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem27
         /// Completed 07/09/2009
         /// </summary>
-        public static long Problem27()
+        public long Problem27()
         {
             long answer = 0;
 
@@ -736,10 +719,10 @@ namespace ProjectEuler.EulerCSharp
             for (long a = -999; a < 1000; a++)
                 for (long b = -999; b < 1000; b++)
                 {
-                    if (util.IsPrime(b))
+                    if (primeNumbers.IsPrime(b))
                     {
                         long length = 0;
-                        while (util.IsPrime(length * (a + length) + b))
+                        while (primeNumbers.IsPrime(length * (a + length) + b))
                         {
                             if (length > max)
                             {
@@ -760,7 +743,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem28
         /// Completed 14/01/2009
         /// </summary>
-        public static long Problem28()
+        public long Problem28()
         {
             long answer = 0;
             long target = 1001;
@@ -787,7 +770,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem29
         /// Completed ???
         /// </summary>
-        public static long Problem29()
+        public long Problem29()
         {
             long answer = 0;
 
@@ -811,7 +794,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem30
         /// Completed 14/01/2009
         /// </summary>
-        public static long Problem30()
+        public long Problem30()
         {
             long answer = 0;
 
@@ -845,7 +828,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem32
         /// Completed 08/09/2009
         /// </summary>
-        public static long Problem32()
+        public long Problem32()
         {
             // assuming a x b = c
             // note that the length of c must be four digits, leaving five for a * b
@@ -875,7 +858,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem33
         /// Completed 05/03/2009
         /// </summary>
-        public static long Problem33()
+        public long Problem33()
         {
             long answer = 0;
 
@@ -922,7 +905,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem34
         /// Completed 14/01/2009
         /// </summary>
-        public static long Problem34()
+        public long Problem34()
         {
             long answer = 0;
 
@@ -957,13 +940,13 @@ namespace ProjectEuler.EulerCSharp
         /// Problem35
         /// Completed 22/01/2009
         /// </summary>
-        public static long Problem35()
+        public long Problem35()
         {
             long answer = 0;
 
             long target = 1000000;
 
-            long[] primes = util.Primes(target, target);
+            long[] primes = primeNumbers.Primes(target, target);
             long numprimes = primes[0];
 
             bool[] isPrime = new bool[target];
@@ -1003,7 +986,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem36
         /// Completed 15/01/2009
         /// </summary>
-        public static long Problem36()
+        public long Problem36()
         {
             long answer = 0;
 
@@ -1031,14 +1014,15 @@ namespace ProjectEuler.EulerCSharp
         /// Problem37
         /// Completed 12/03/2009
         /// </summary>
-        public static long Problem37()
+        public long Problem37()
         {
             long answer = 0;
             long count = 0;
             long target = 11;
 
-            long[] primes = util.Primes(100000, 10000000);
-            long numprimes = primes[0];
+            long[] primes = primeNumbers.Primes(100000, 1000000);
+            int numprimes = (int)primes[0];
+            Dictionary<long, long> primesDict = primes.Skip(1).Take(numprimes + 1).ToDictionary(l => l);
 
             int numdigits = 0;
             bool isTruncatable = true;
@@ -1052,12 +1036,12 @@ namespace ProjectEuler.EulerCSharp
 
                 for (int j = 1; j < numdigits; j++)
                 {
-                    if (!primes.Contains(long.Parse(digits.Substring(j))))
+                    if (!primesDict.ContainsKey(long.Parse(digits.Substring(j))))
                     {
                         isTruncatable = false;
                         j = numdigits - 1;
                     }
-                    if (!primes.Contains(long.Parse(digits.Substring(0, j))))
+                    if (!primesDict.ContainsKey(long.Parse(digits.Substring(0, j))))
                     {
                         isTruncatable = false;
                         j = numdigits - 1;
@@ -1084,7 +1068,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem38
         /// Completed 08/09/2009
         /// </summary>
-        public static long Problem38()
+        public long Problem38()
         {
             // note that the integer a must begin with 9
 
@@ -1113,7 +1097,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem39
         /// Completed 15/09/2009
         /// </summary>
-        public static long Problem39()
+        public long Problem39()
         {
             long answer = 0;
 
@@ -1152,7 +1136,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem40
         /// Completed ???
         /// </summary>
-        public static long Problem40()
+        public long Problem40()
         {
             long answer = 0;
 
@@ -1181,14 +1165,14 @@ namespace ProjectEuler.EulerCSharp
         /// Problem41
         /// Completed 03/03/2009
         /// </summary>
-        public static long Problem41()
+        public long Problem41()
         {
             long answer = 0;
 
             // can't be 9 or 8 digits, as all such pandigital numbers are all divisible by 3
 
             long max = 7654321;
-            long[] primes = util.Primes(max, max);
+            long[] primes = primeNumbers.Primes(max, max);
 
             long numprimes = primes[0];
 
@@ -1208,12 +1192,12 @@ namespace ProjectEuler.EulerCSharp
         /// Problem42
         /// Completed 31/08/2009
         /// </summary>
-        public static long Problem42()
+        public long Problem42()
         {
             long answer = 0;
 
             // get words
-            StreamReader sr = new StreamReader("Data\\words.txt");
+            StreamReader sr = new StreamReader(Utilities.DataPath + @"\words.txt");
             string all = sr.ReadLine();
             string[] words = all.Split(',').Select(s => s.Substring(1, s.Length - 2)).ToArray();
 
@@ -1237,7 +1221,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem43
         /// Completed 04/03/2009
         /// </summary>
-        public static long Problem43()
+        public long Problem43()
         {
             long answer = 0;
             string target = "1234567890";
@@ -1273,7 +1257,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem44
         /// Completed 04/03/2009
         /// </summary>
-        public static long Problem44()
+        public long Problem44()
         {
             long answer = 0;
             long max = 3000;
@@ -1287,11 +1271,13 @@ namespace ProjectEuler.EulerCSharp
 
             long maxpent = pent[max];
 
+            Dictionary<long, long> pentDict = pent.ToDictionary(l => l);
+
             for (long j = 2; j <= max; j++)
             {
                 for (long k = j - 1; k > 0; k--)
                 {
-                    if (pent.Contains(pent[j] + pent[k]) && pent.Contains(pent[j] - pent[k]))
+                    if (pentDict.ContainsKey(pent[j] + pent[k]) && pentDict.ContainsKey(pent[j] - pent[k]))
                     {
                         answer = util.Pentagonal(j) - util.Pentagonal(k);
                         break;
@@ -1308,7 +1294,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem45
         /// Completed 04/03/2009
         /// </summary>
-        public static long Problem45()
+        public long Problem45()
         {
             long answer = 0;
 
@@ -1333,11 +1319,11 @@ namespace ProjectEuler.EulerCSharp
         /// Problem46
         /// Completed 15/09/2009
         /// </summary>
-        public static long Problem46()
+        public long Problem46()
         {
             long answer = 0;
 
-            long[] primes = util.Primes(10000, 200000);
+            long[] primes = primeNumbers.Primes(10000, 200000);
             primes[0] = -1;
 
             for (long a = 9; a <= 100000; a += 2)
@@ -1373,7 +1359,7 @@ namespace ProjectEuler.EulerCSharp
         /// Problem47
         /// Completed 26/09/2009 
         /// </summary>
-        public static long Problem47()
+        public long Problem47()
         {
             long answer = 0;
             long target = 4;
@@ -1381,12 +1367,12 @@ namespace ProjectEuler.EulerCSharp
             long foundInARow = 0;
             long n = 0;
 
-            long[] primes = util.Primes(1000000, 1000000);
+            long[] primes = primeNumbers.Primes(1000000, 1000000);
 
             while (!found)
             {
                 n++;
-                if (util.DistinctPrimeFactors(n, primes) >= target)
+                if (primeNumbers.DistinctPrimeFactors(n, primes) >= target)
                 {
                     foundInARow++;
                 }
@@ -1409,28 +1395,445 @@ namespace ProjectEuler.EulerCSharp
         /// Problem48
         /// Completed 15/01/2009
         /// </summary>
-        public static string Problem48()
+        public long Problem48()
         {
-            BigNum sum = new BigNum(0);
+            BigInteger sum = 0;
 
             for (long i = 1; i <= 1000; i++)
             {
-                BigNum power = new BigNum(1);
+                BigInteger power = 1;
                 for (long j = 1; j <= i; j++)
-                    power = power.MultiplyBy(i);
+                    power = power * i;
 
-                sum = sum.AddTo(power);
+                sum = sum + power;
             }
 
             // number has 3001 digits!
-            return sum.ToString();
+            string s = sum.ToString();
+
+            return long.Parse(s.Substring(s.Length - 10));
+        }
+
+        /// <summary>
+        /// Problem49
+        /// Completed 31/01/2011
+        /// </summary>
+        public long Problem49()
+        {
+            long answer = 0;
+
+            List<long> primes = primeNumbers.Primes(10000, 10000).ToList();
+            primes.RemoveAt(0);
+            primes.RemoveAll(p => p == 0);
+
+            Dictionary<long, long> primesDict = primes.ToDictionary(l => l);
+
+            long ans1 = 0, ans2 = 0;
+
+            for (long a = 1001; a < 9999; a += 2)
+            {
+                for (long b = 2; b < 3333; b += 2)
+                {
+
+                    if (a != 1487
+                        && util.ArePermutations(a, a + b)
+                        && util.ArePermutations(a, a + b + b)
+                        && primesDict.ContainsKey(a)
+                        && primesDict.ContainsKey(a + b)
+                        && primesDict.ContainsKey(a + b + b))
+                    {
+                        ans1 = a;
+                        ans2 = b;
+                    }
+                }
+            }
+
+            answer = ans1 * 100000000 + (ans1 + ans2) * 10000 + (ans1 + ans2 + ans2);
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem50
+        /// Completed 27/05/2012
+        /// </summary>
+        public long Problem50()
+        {
+            long answer = 0;
+            long limit = 1000000;
+
+            long[] primes = primeNumbers.Primes(limit, limit);
+
+            long numPrimes = primes[0];
+
+            long[] sumPrimesTo = new long[primes.GetLength(0)];
+
+            long agg = 0;
+            for (long i = 1; i <= numPrimes; i++)
+            {
+                agg += primes[i];
+                sumPrimesTo[i] = agg;
+            }
+
+            // now a number x can be written as the sum of n primes
+            // iff x = sumPrimesTo[a+n] - sumPrimesTo[a] for some a
+
+            // so to check whether a sequence exists of length n we can check
+            // whether sumPrimesTo[a+n] - sumPrimesTo[a] is (1) prime and (2) <limit
+            // for each a
+
+            for (int n = 1000; n >= 1; n--)
+            {
+                for (int a = 1; a <= numPrimes - n; a++)
+                {
+                    long sum = sumPrimesTo[a + n] - sumPrimesTo[a];
+                    if (sum < limit && primes.Contains(sum))
+                    {
+                        return sum;
+                    }
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem51
+        /// Completed 16/01/2013
+        /// </summary>
+        public long Problem51()
+        {
+            // can't substitute last digit
+            // checked it must be over 100000
+
+            long answer = 0;
+
+            var primes = primeNumbers.Primes(1000000, 1000000);
+            Dictionary<long, long> primesDict = primes.Skip(1).Take((int)primes[0] + 1).ToDictionary(l => l);
+
+            var subsetsOfSix = Utilities.GenerateSubsets<int>(new List<int> { 0, 1, 2, 3, 4 }, false, true);
+
+            bool found = false;
+            int nextIndex = Array.FindIndex(primes, 1, n => (n > 99999));
+
+            while (!found)
+            {
+                long p = primes[nextIndex];
+                string s = p.ToString();
+
+                foreach (var digitsToReplace in subsetsOfSix)
+                {
+                    var candidates = new List<long>();
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        if (i > 0 || !digitsToReplace.Contains(0))
+                        {
+                            string s2 = s;
+                            string d = i.ToString();
+                            foreach (int digitToReplace in digitsToReplace)
+                            {
+                                s2 = s2.Remove(digitToReplace, 1);
+                                s2 = s2.Insert(digitToReplace, d);
+                            }
+
+                            long l = long.Parse(s2);
+
+                            if (primesDict.ContainsKey(l))
+                            {
+                                candidates.Add(l);
+                            }
+                        }
+                    }
+
+                    if (candidates.Count >= 8)
+                    {
+                        found = true;
+                        answer = candidates.Min();
+                    }
+                }
+
+                nextIndex++;
+            }
+
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem52
+        /// Completed 16/01/2013
+        /// </summary>
+        public long Problem52()
+        {
+            // must start with a 1
+
+            long answer = 0;
+            bool found = false;
+
+            long i = 1;
+
+            while (!found)
+            {
+                i++;
+                if (i.ToString()[0] == '2')
+                {
+                    i *= 5;
+                }
+
+                if (util.ArePermutations(i, i * 2) && util.ArePermutations(i, i * 3) && util.ArePermutations(i, i * 4) && util.ArePermutations(i, i * 5) && util.ArePermutations(i, i * 6))
+                {
+                    answer = i;
+                    found = true;
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem53
+        /// Completed 22/06/2010
+        /// </summary>
+        public long Problem53()
+        {
+            long answer = 0;
+
+            double[] logFactorials = new double[101];
+
+            logFactorials[1] = 0.0;
+
+            for (long i = 1; i <= 100; i++)
+            {
+                logFactorials[i] = logFactorials[i - 1] + Math.Log(i);
+            }
+
+            double logTarget = Math.Log(1000000);
+
+            for (long n = 1; n <= 100; n++)
+            {
+                for (long r = 1; r <= n; r++)
+                {
+                    double logC = logFactorials[n] - logFactorials[r] - logFactorials[n - r];
+
+                    if (logC > logTarget)
+                    {
+                        answer++;
+                    }
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem54
+        /// Completed 30/06/2010
+        /// </summary>
+        public long Problem54()
+        {
+            return Problem_54.Problem54(Utilities.DataPath + @"\poker.txt");
+        }
+
+        /// <summary>
+        /// Problem55
+        /// Completed 01/07/2010
+        /// </summary>
+        public long Problem55()
+        {
+            long answer = 0;
+
+            for (long n = 10; n < 10000; n++)
+            {
+                BigInteger number = n;
+                bool foundPalindrome = false;
+
+                for (int iter = 0; iter < 50; iter++)
+                {
+                    BigInteger reversed = BigInteger.Parse(util.ReverseString(number.ToString()));
+                    number = number + reversed;
+
+                    if (util.IsPalindrome(number.ToString()))
+                    {
+                        foundPalindrome = true;
+                        iter = 50;
+                    }
+                }
+
+                if (!foundPalindrome)
+                {
+                    answer++;
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem56
+        /// Completed 19/01/2013
+        /// </summary>
+        public long Problem56()
+        {
+            long answer = 0;
+
+            for (int a = 1; a < 100; a++)
+            {
+                for (int b = 1; b < 100; b++)
+                {
+                    BigInteger power = BigInteger.Pow(a, b);
+                    long sumDigits = util.SumDigits(power);
+
+                    if (sumDigits > answer)
+                    {
+                        answer = sumDigits;
+                    }
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem57
+        /// Completed 27/01/2013
+        /// </summary>
+        public long Problem57()
+        {
+            long target = 1000;
+
+            BigFraction[] expansion = new BigFraction[target + 1];
+
+            BigFraction one = new BigFraction(1, 1);
+            expansion[0] = one;
+
+            long count = 0;
+
+            for (long i = 1; i <= target; i++)
+            {
+                expansion[i] = one + (one / (expansion[i - 1] + one));
+
+                expansion[i] = expansion[i].Reduce();
+
+                if (expansion[i].Numerator.ToString().Length > expansion[i].Denominator.ToString().Length)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        /// <summary>
+        /// Problem59
+        /// Completed 19/01/2013
+        /// </summary>
+        public long Problem59()
+        {
+            StreamReader sr = new StreamReader(Utilities.DataPath + @"\cipher1.txt");
+            string rawData = sr.ReadLine();
+            byte[] asciiCodes = rawData.Split(',').Select(s => Byte.Parse(s)).ToArray();
+
+            string[] candidateKeys = new string[26 * 26 * 26];
+            {
+                int index = 0;
+
+                for (int i = 0; i < 26; i++)
+                {
+                    for (int j = 0; j < 26; j++)
+                    {
+                        for (int k = 0; k < 26; k++)
+                        {
+                            candidateKeys[index] = Encoding.ASCII.GetString(new byte[] { (byte)(97 + i), (byte)(97 + j), (byte)(97 + k) });
+                            index++;
+                        }
+                    }
+                }
+            }
+
+            Func<byte[], string, string> decrypt = (codes, key) =>
+            {
+                int index = 0;
+                int keyLength = key.Length;
+
+                byte[] keyCodes = Encoding.ASCII.GetBytes(key);
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte asciiCode in codes)
+                {
+                    byte decrypted = (byte)(asciiCode ^ keyCodes[index % keyLength]);
+                    sb.Append(Encoding.ASCII.GetString(new byte[] { decrypted }));
+                    index++;
+                }
+
+                return sb.ToString();
+            };
+
+            var decryptedData = candidateKeys.ToDictionary(key => key, key => decrypt(asciiCodes, key));
+            var countThe = decryptedData.ToDictionary(kvp => kvp.Key, kvp => new Regex("the").Matches(kvp.Value).Count);
+
+            int max = countThe.Values.Max();
+            string correctKey = countThe.Where(kvp => kvp.Value == max).Single().Key;
+            string correctDecryption = decryptedData[correctKey];
+
+            return Encoding.ASCII.GetBytes(correctDecryption).Select(b => (long)b).Sum();
+        }
+
+        /// <summary>
+        /// Problem63
+        /// Completed 19/01/2013
+        /// </summary>
+        public long Problem63()
+        {
+            // done by hand
+            return 49;
+        }
+
+        /// <summary>
+        /// Problem65
+        /// Completed 06/01/2013
+        /// </summary>
+        public long Problem65()
+        {
+            long target = 100;
+
+            long[] sequence = new long[target];
+
+            sequence[0] = 2;
+
+            for (int i = 1; i < target; i++)
+            {
+                if (i % 3 == 2)
+                {
+                    sequence[i] = (i + 1) * 2 / 3;
+                }
+                else
+                {
+                    sequence[i] = 1;
+                }
+            }
+
+            // could change to BigFraction here
+            BigInteger[] numerators = new BigInteger[target];
+            BigInteger[] denominators = new BigInteger[target];
+
+            numerators[target - 1] = 1;
+            denominators[target - 1] = sequence[target - 1];
+
+            for (long i = target - 2; i >= 0; i--)
+            {
+                numerators[i] = sequence[i] * numerators[i + 1] + denominators[i + 1];
+                denominators[i] = numerators[i + 1];
+            }
+
+            return util.SumDigits(numerators[0]);
         }
 
         /// <summary>
         /// Problem67
         /// Completed 31/08/2009
         /// </summary>
-        public static long Problem67()
+        public long Problem67()
         {
             long answer = 0;
 
@@ -1438,7 +1841,7 @@ namespace ProjectEuler.EulerCSharp
 
             long[,] triangle = new long[100, 100];
 
-            StreamReader sr = new StreamReader("Data\\triangle.txt");
+            StreamReader sr = new StreamReader(Utilities.DataPath + @"\triangle.txt");
 
             for (int row = 1; row <= 100; row++)
             {
@@ -1476,14 +1879,14 @@ namespace ProjectEuler.EulerCSharp
         /// Problem69
         /// Completed 26/09/2009
         /// </summary>
-        public static long Problem69()
+        public long Problem69()
         {
             // NB I should have worked out that the answer is just a multpiple of the smallest primes
             // i.e. 2*3*5*7*11*13*17 = 510510
 
             long answer = 0;
 
-            long[] primes = util.Primes(1000000, 1000000);
+            long[] primes = primeNumbers.Primes(1000000, 1000000);
 
             long maxn = 0;
             double max = 0;
@@ -1492,7 +1895,7 @@ namespace ProjectEuler.EulerCSharp
 
             for (long n = 6; n <= 1000000; n += 6)
             {
-                phi = util.EulerTotient(n, primes);
+                phi = primeNumbers.EulerTotient(n, primes);
                 ratio = (double)n / (double)phi;
                 if (ratio > max)
                 {
@@ -1506,12 +1909,485 @@ namespace ProjectEuler.EulerCSharp
             return answer;
         }
 
+        /// <summary>
+        /// Problem70
+        /// Completed 03/02/2013
+        /// </summary>
+        public long Problem70()
+        {
+            long max = 10000000;
+
+            long[] totients = new long[max];
+
+            for (int i = 2; i < max; i++)
+            {
+                totients[i] = i;
+            }
+
+            long min = 0;
+            double minRatio = float.MaxValue;
+
+            for (int i = 2; i < max; i++)
+            {
+                if (totients[i] == i)
+                {
+                    for (int j = i; j < max; j += i)
+                    {
+                        totients[j] = totients[j] - totients[j] / i;
+                    }
+                }
+
+                if (util.ArePermutations(i, totients[i]))
+                {
+                    double ratio = (float)i / (float)totients[i];
+                    if (ratio < minRatio)
+                    {
+                        min = i;
+                        minRatio = ratio;
+                    }
+                }
+            }
+
+            return min;
+        }
+
+        /// <summary>
+        /// Problem72
+        /// Completed 20/01/2013
+        /// </summary>
+        public long Problem72()
+        {
+            // problem reduces to:
+            // sum Euler's totient from 2 to 1,000,000
+            long answer = 0;
+
+            long[] totients = new long[1000001];
+
+            for (int i = 2; i <= 1000000; i++)
+            {
+                totients[i] = i;
+            }
+
+            for (int i = 2; i <= 1000000; i++)
+            {
+                if (totients[i] == i)
+                {
+                    for (int j = i; j <= 1000000; j += i)
+                    {
+                        totients[j] = totients[j] - totients[j] / i;
+                    }
+                }
+
+                answer += totients[i];
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem74
+        /// Completed 06/02/2013
+        /// </summary>
+        public long Problem74()
+        {
+            int[] factorials = new int[11];
+
+            factorials[0] = 1;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                factorials[i] = i * factorials[i - 1];
+            }
+
+            Func<int, int> next = n =>
+            {
+                string s = n.ToString();
+                int total = 0;
+
+                for (int i = 0; i < s.Length; i++)
+                {
+                    int digit = int.Parse(s.Substring(i, 1));
+                    total += factorials[digit];
+                }
+
+                return total;
+            };
+
+            Func<int, int> howManyNonRepeating = n =>
+            {
+                List<int> chain = new List<int>();
+                int nextNumber = n;
+
+                do
+                {
+                    chain.Add(nextNumber);
+                    nextNumber = next(nextNumber);
+                } while (!chain.Contains(nextNumber));
+
+                return chain.Count;
+            };
+
+            int answer = 0;
+
+            for (int i = 1; i < 1000000; i++)
+            {
+                if (howManyNonRepeating(i) == 60)
+                {
+                    answer++;
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem79
+        /// Completed 06/01/2013
+        /// </summary>
+        public long Problem79()
+        {
+            // done by eye
+
+            return 73162890;
+        }
+
+        /// <summary>
+        /// Problem89
+        /// Completed 09/01/2013
+        /// </summary>
+        public long Problem89()
+        {
+            return RomanNumerals.Problem89(Utilities.DataPath + @"\roman.txt");
+        }
+
+        /// <summary>
+        /// Problem92
+        /// Completed ???
+        /// </summary>
+        public long Problem92()
+        {
+            long limit = 10000000;
+
+            bool[] hasBeenCalculated = new bool[limit];
+
+            bool[] goesTo89 = new bool[limit];
+
+            for (long i = 1; i < limit; i++)
+            {
+                bool finished = false;
+                bool wentTo89 = false;
+
+                List<long> chain = new List<long>();
+                long next = i;
+
+                do
+                {
+                    chain.Add(next);
+                    next = util.SumOfSquaredDigits(next);
+                    if (hasBeenCalculated[next])
+                    {
+                        wentTo89 = goesTo89[next];
+                        finished = true;
+                    }
+                    else
+                    {
+                        wentTo89 = (next == 89);
+                        finished = (wentTo89 || next == 1);
+                    }
+                } while (!finished);
+
+                foreach (long n in chain)
+                {
+                    hasBeenCalculated[n] = true;
+                    goesTo89[n] = wentTo89;
+                }
+            }
+
+            return goesTo89.Count(b => b);
+        }
+
+        /// <summary>
+        /// Problem97
+        /// Completed 19/01/2013
+        /// </summary>
+        public long Problem97()
+        {
+            long a = 1;
+
+            for (int i = 0; i < 7830457; i++)
+            {
+                a = a << 1;
+                a = a % 10000000000;
+            }
+
+            a *= 28433;
+            a += 1;
+
+            a = a % 10000000000;
+
+            return a;
+        }
+
+        /// <summary>
+        /// Problem112
+        /// Completed 26/01/2013
+        /// </summary>
+        public long Problem112()
+        {
+            Func<long, bool> isIncreasing = n =>
+            {
+                string s = n.ToString();
+                bool failed = false;
+                for (int i = 0; i < s.Length - 1; i++)
+                {
+                    if (s[i] > s[i + 1])
+                    {
+                        failed = true;
+                        i = s.Length; // exit loop
+                    }
+                }
+                return !failed;
+            };
+
+            Func<long, bool> isDecreasing = n =>
+            {
+                string s = n.ToString();
+                bool failed = false;
+                for (int i = 0; i < s.Length - 1; i++)
+                {
+                    if (s[i] < s[i + 1])
+                    {
+                        failed = true;
+                        i = s.Length; // exit loop
+                    }
+                }
+                return !failed;
+            };
+
+            Func<long, bool> isBouncy = n => !(isIncreasing(n) || isDecreasing(n));
+
+            bool found = false;
+            long j = 1;
+            long count = 0;
+            long answer = 0;
+
+            while (!found)
+            {
+                if (isBouncy(j)) count++;
+
+                if (count * 100 == j * 99)
+                {
+                    found = true;
+                    answer = j;
+                }
+
+                j++;
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem144
+        /// Completed 13/01/2013
+        /// </summary>
+        public long Problem144()
+        {
+            Ray start = new Ray(new Point(0.0, 10.1, 0.0), new Vector(1.4, -19.7, 0.0));
+
+            Func<Ray, Point> hitsEllipse = r =>
+            {
+                double a = r.Direction.Y / r.Direction.X;
+                double b = r.Origin.Y - a * r.Origin.X;
+
+                double x1 = (-a * b + Math.Sqrt(100.0 * a * a + 400 - 4.0 * b * b)) / (4.0 + a * a);
+                double y1 = a * x1 + b;
+
+                double x2 = (-a * b - Math.Sqrt(100.0 * a * a + 400 - 4.0 * b * b)) / (4.0 + a * a);
+                double y2 = a * x2 + b;
+
+                Point p1 = new Point(x1, y1, 0.0);
+                Point p2 = new Point(x2, y2, 0.0);
+
+                if ((p1 - r.Origin).LengthSqd > (p2 - r.Origin).LengthSqd)
+                {
+                    return p1;
+                }
+                else
+                {
+                    return p2;
+                }
+            };
+
+            Point hit;
+            Ray latest = start;
+            long hitCount = 0;
+
+            do
+            {
+                hit = hitsEllipse(latest);
+                hitCount++;
+
+                Vector tangentDirection = new Vector(hit.Y, -4.0 * hit.X, 0.0);
+                Vector normalDirection = new Vector(tangentDirection.Y, -tangentDirection.X, 0.0);
+                Vector normal = normalDirection.Normalised();
+                Vector reflectDirection = latest.Direction - 2.0 * normal * latest.Direction.Dot(normal);
+                Ray next = new Ray(hit, reflectDirection);
+
+                latest = next;
+            }
+            while (Math.Abs(hit.X) > 0.01 || hit.Y < 0.0);
+
+            return hitCount - 1;
+        }
+
+        /// <summary>
+        /// Problem202
+        /// Completed 31/01/2011
+        /// </summary>
+        public long Problem202()
+        {
+            // this is very slow, about 8 minutes
+            // could speed up using inclusion-exclusion principle
+
+            long answer = 0;
+
+            long n = 12017639147;
+
+            long[] primes = primeNumbers.Primes(10000, 1000);
+
+            long frac = (n + 3) / 2;
+
+            List<long> primeFactors = primeNumbers.PrimeFactors(frac, primes).Distinct().ToList();
+
+            bool test = true;
+            for (long i = 3 - (frac % 3); i < frac; i += 3)
+            {
+                test = true;
+
+                foreach (long p in primeFactors)
+                {
+                    if (i % p == 0)
+                    {
+                        test = false;
+                    }
+                }
+
+                if (test)
+                {
+                    answer++;
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem206
+        /// Completed 26/01/2013
+        /// </summary>
+        public long Problem206()
+        {
+            // must be divisible by 10 and end in "30" or "70"
+            // hence don't need to check the last "9" digit
+            // must be between 1,000,000,000 and 1,420,000,000
+
+            long i = 1000000030;
+            bool found = false;
+            bool endsInThirty = true;
+            long answer = 0;
+
+            while (!found)
+            {
+                long square = i * i;
+                string s = square.ToString();
+
+                if (s[0] == '1' && s[2] == '2' && s[4] == '3' && s[6] == '4' && s[8] == '5' && s[10] == '6' && s[12] == '7' && s[14] == '8')
+                {
+                    answer = i;
+                    found = true;
+                }
+
+                if (endsInThirty)
+                {
+                    i += 40;
+                    endsInThirty = false;
+                }
+                else
+                {
+                    i += 60;
+                    endsInThirty = true;
+                }
+            }
+
+            return answer;
+        }
+
+        /// <summary>
+        /// Problem232
+        /// Not Completed Yet!
+        /// </summary>
+        //public double Problem232()
+        //{
+        //    double answer = 0;
+
+        //    answer = EulerFSharp.Problem232.Problem232(98, 98);
+        //    int T = EulerFSharp.Problem232.T(99, 99);
+        //    double a1 = EulerFSharp.Problem232.tryP2(99, 99, 1);
+        //    double a2 = EulerFSharp.Problem232.tryP2(99, 99, 2);
+        //    double a6 = EulerFSharp.Problem232.tryP2(99, 99, 6);
+
+        //    return answer;
+        //}
+
+        /// <summary>
+        /// Problem233
+        /// Not Completed Yet!
+        /// </summary>
+        public double Problem233()
+        {
+            long target = 10000000000;
+
+            Func<long, long> f = n =>
+            {
+                long count = 4;
+                double nDouble = (double)n;
+
+                for (long y = 1; y < (n / 2); y++)
+                {
+                    double yDouble = (double)y;
+                    double x = ((nDouble - Math.Sqrt(nDouble * nDouble - 4.0 * yDouble * yDouble - 4 * nDouble * yDouble)) / 2.0);
+
+                    if (x - Math.Floor(x) < 0.000001)
+                    {
+                        count += 8;
+                        if (count > 420)
+                        {
+                            // exit loop immediately
+                            y = n;
+                        }
+                    }
+                }
+
+                return count;
+            };
+
+            long count420 = 0;
+
+            for (long n = 1; n <= 100000; n++)
+            {
+                if (f(n) == 420)
+                    count420++;
+            }
+
+            return count420;
+        }
 
         /// <summary>
         /// Problem235
         /// Completed 12/03/2009
         /// </summary>
-        public static double Problem235()
+        public double Problem235()
         {
             double answer = 0;
 
@@ -1544,6 +2420,51 @@ namespace ProjectEuler.EulerCSharp
             }
 
             answer = x;
+
+            return Math.Round(answer, 12);
+        }
+
+        /// <summary>
+        /// Problem243
+        /// Completed 
+        /// </summary>
+        public long Problem243()
+        {
+            // R(d) is just Euler's totient(d) / (d-1)
+            // calcs below are based on a pattern spotted by eye
+            // ...in the sequence of denominators with new lowest values
+
+            var primes = primeNumbers.Primes(100000, 100000);
+
+            long denom = 2;
+
+            for (int i = 2; i < 100; i++)
+            {
+                for (int p = 1; p < primes[i]; p++)
+                {
+                    denom = denom * (p + 1) / p;
+
+                    long totient = primeNumbers.EulerTotient(denom, primes);
+
+                    double ratio = (double)totient / ((double)denom - 1.0);
+
+                    if (ratio < 15499.0 / 94744.0)
+                    {
+                        return denom;
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// ProblemTemplate
+        /// Completed 
+        /// </summary>
+        public long Prob()
+        {
+            long answer = 0;
 
             return answer;
         }
