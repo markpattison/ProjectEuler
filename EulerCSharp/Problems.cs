@@ -6,6 +6,8 @@ using System.IO;
 using System.Numerics;
 using System.Text.RegularExpressions;
 
+using ProjectEuler.EulerCSharp._3D;
+
 namespace ProjectEuler.EulerCSharp
 {
     public class Problems
